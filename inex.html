@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EasyEarning-e² | Affiliate Marketing Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Homepage (Registration/Login) -->
+  <div id="homepage" class="home-container">
+    <h1 class="main-blue">EasyEarning-e²</h1>
+    <div class="home-card">
+      <p>Earn money by inviting friends and completing tasks!</p>
+      <form id="registrationForm">
+        <label>Username:</label>
+        <input type="text" name="username" required>
+        <label>Phone Number:</label>
+        <input type="tel" name="phone" required>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <label>Country:</label>
+        <select name="country" required>
+          <option value="">Select Country</option>
+          <option value="Kenya">Kenya</option>
+          <option value="Uganda">Uganda</option>
+        </select>
+        <div class="payment-info">
+          <label>Registration Fee (200 KES):</label>
+          <p>
+            Pay <strong>200 KES</strong> to <span class="pay-number">Mpesa: 0740685187</span>.<br>
+            Payment details will be provided after registration.
+          </p>
+        </div>
+        <button type="submit" class="btn-blue">Register</button>
+      </form>
+      <p>Already registered? <a href="#" class="main-blue" onclick="showApp()">Login here</a></p>
+    </div>
+  </div>
+
+  <!-- Main App Sections -->
+  <div id="app" style="display:none;">
+    <div class="sidebar vertical-sidebar">
+      <div class="logo main-blue">EasyEarning-e²</div>
+      <ul>
+        <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+        <li><a href="#" onclick="showSection('earn')">Earn</a></li>
+        <li><a href="#" onclick="showSection('referral')">Referral</a></li>
+        <li><a href="#" onclick="showSection('withdrawal')">Withdrawal</a></li>
+        <li><a href="#" onclick="showSection('leaderboard')">Leaderboard</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <!-- Dashboard -->
+      <section id="dashboard">
+        <div class="container">
+          <h2>Dashboard</h2>
+          <div class="dashboard-card">
+            <p>Welcome, <span id="dashboardUsername"></span>!</p>
+            <ul>
+              <li>Total Earnings: <span id="totalEarnings">0 KES</span></li>
+              <li>Referral Earnings (Level 1): <span id="referralEarningsL1">0 KES</span></li>
+              <li>Referral Earnings (Level 2): <span id="referralEarningsL2">0 KES</span></li>
+              <li>Photo Likes Earnings: <span id="likesEarnings">0 KES</span></li>
+              <li>Video Watch Earnings: <span id="videoEarnings">0 KES</span></li>
+              <li>Trivia Earnings: <span id="triviaEarnings">0 KES</span></li>
+              <li>Your Referral Link: <span id="referralLink">[Link]</span></li>
+              <li>Available Balance: <span id="availableBalance">0 KES</span></li>
+              <li>Withdrawn: <span id="withdrawnBalance">0 KES</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Earn Section -->
+      <section id="earn" style="display:none;">
+        <div class="container">
+          <h2>Earn Money</h2>
+          <div class="earn-tabs">
+            <button onclick="showEarnTab('photos')" class="btn-blue-outline">Like Photos</button>
+            <button onclick="showEarnTab('videos')" class="btn-blue-outline">Watch Videos</button>
+            <button onclick="showEarnTab('trivia')" class="btn-blue-outline">Trivia Questions</button>
+          </div>
+          <div id="earnPhotos" class="earn-tab-content">
+            <h3>Like Photos (5 KES/photo)</h3>
+            <div id="photoGallery"></div>
+          </div>
+          <div id="earnVideos" class="earn-tab-content" style="display:none;">
+            <h3>Watch Videos (5 KES/video)</h3>
+            <div id="videoGallery"></div>
+          </div>
+          <div id="earnTrivia" class="earn-tab-content" style="display:none;">
+            <h3>Trivia Questions (1 KES/correct answer)</h3>
+            <div id="triviaQuestions"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Referral System -->
+      <section id="referral" style="display:none;">
+        <div class="container">
+          <h2>Referral System</h2>
+          <div class="referral-card">
+            <p>Share your referral link to earn:</p>
+            <ul>
+              <li><b>Level 1:</b> 100 KES per direct sign-up</li>
+              <li><b>Level 2:</b> 50 KES per your downline's sign-up</li>
+            </ul>
+            <input type="text" id="userReferralLink" readonly style="width:80%;">
+            <button onclick="copyReferralLink()" class="btn-blue-outline">Copy Link</button>
+            <p>Level 1 Referrals: <span id="referralCountL1">0</span> | Earnings: <span id="referralEarningsL1_2">0 KES</span></p>
+            <p>Level 2 Referrals: <span id="referralCountL2">0</span> | Earnings: <span id="referralEarningsL2_2">0 KES</span></p>
+          </div>
+        </div>
+      </section>
+      <!-- Withdrawal System -->
+      <section id="withdrawal" style="display:none;">
+        <div class="container">
+          <h2>Withdraw Earnings</h2>
+          <div class="withdrawal-card">
+            <p>Minimum withdrawal: <strong>150 KES</strong>. Service fee: <strong>10%</strong></p>
+            <form id="withdrawalForm">
+              <label>Amount (KES):</label>
+              <input type="number" name="amount" min="150" required>
+              <label>Phone Number (for payment):</label>
+              <input type="tel" name="withdrawPhone" required>
+              <button type="submit" class="btn-blue">Withdraw</button>
+            </form>
+            <p id="withdrawalMessage"></p>
+          </div>
+        </div>
+      </section>
+      <!-- Leaderboard -->
+      <section id="leaderboard" style="display:none;">
+        <div class="container">
+          <h2>Leaderboard</h2>
+          <div class="leaderboard-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Username</th>
+                  <th>Earnings (KES)</th>
+                  <th>Referrals</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboardTable">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

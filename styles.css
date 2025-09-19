@@ -1,0 +1,36 @@
+body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; min-height: 100vh; }
+
+/* Homepage */
+.main-blue { color: #2466c2; }
+.blue-bg { background: linear-gradient(135deg, #2466c2 0%, #e6e0ff 100%); }
+.home-container { max-width: 410px; margin: 80px auto; background: #fff; border-radius: 18px; padding: 36px 32px; box-shadow: 0 8px 32px rgba(36,102,194,0.12); }
+.home-card { background: #f6faff; padding: 24px 18px; border-radius: 12px; margin-bottom: 22px; color: #2466c2; box-shadow: 0 2px 8px rgba(36,102,194,0.07); }
+.payment-info { background: #e3f2fd; border-left: 5px solid #2466c2; padding: 10px 18px; border-radius: 8px; margin: 18px 0; }
+.pay-number { font-weight: bold; font-size: 1.1em; color: #36cfc9; }
+form label { display: block; margin-top: 18px; font-weight: 500; color: #2466c2; }
+form input, form select { width: 100%; padding: 10px 12px; margin-top: 6px; border: 1.5px solid #2466c2; border-radius: 8px; font-size: 1em; background: #f8fafc; margin-bottom: 6px;}
+form input:focus, form select:focus { border-color: #36cfc9; outline: none; }
+.btn-blue { background: linear-gradient(90deg, #2466c2 60%, #36cfc9 100%); color: #fff; border: none; padding: 13px 30px; border-radius: 8px; font-size: 1.09em; font-weight: bold; margin-top: 18px; cursor: pointer; transition: background 0.2s;}
+.btn-blue:hover { background: #fed766; color: #2466c2; }
+.btn-blue-outline { background: #fff; color: #2466c2; border: 2px solid #2466c2; padding: 10px 24px; border-radius: 7px; font-weight: bold; margin-top: 12px; margin-right: 8px; cursor: pointer; transition: background 0.2s, color 0.2s;}
+.btn-blue-outline:hover { background: #2466c2; color: #fff; }
+
+/* Sidebar & Main App */
+.vertical-sidebar { position: fixed; left: 0; top: 0; bottom: 0; width: 200px; background: linear-gradient(135deg, #2466c2 60%, #36cfc9 100%); color: #fff; box-shadow: 2px 0 8px rgba(36,102,194,0.09); display: flex; flex-direction: column; align-items: center; padding-top: 28px; z-index: 10; }
+.vertical-sidebar .logo { font-size: 1.5em; font-weight: bold; margin-bottom: 32px; letter-spacing: 1px; background: linear-gradient(90deg, #fed766 80%, #fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.vertical-sidebar ul { list-style: none; padding: 0; width: 100%; }
+.vertical-sidebar ul li { width: 100%; margin-bottom: 12px; }
+.vertical-sidebar ul li a { display: block; padding: 14px 24px; color: #fff; text-decoration: none; font-size: 1.08em; border-radius: 8px 0 0 8px; transition: background 0.2s, color 0.2s;}
+.vertical-sidebar ul li a:hover { background: #fed766; color: #2466c2; }
+.main-content { margin-left: 200px; padding: 30px 16px; }
+.container { background: #fff; padding: 28px 22px; border-radius: 18px; box-shadow: 0 8px 32px rgba(36,102,194,0.11); max-width: 650px; margin: 0 auto 38px auto; }
+h1, h2, h3 { color: #2466c2; margin-bottom: 18px; font-weight: 700; letter-spacing: 0.5px;}
+.dashboard-card, .referral-card, .withdrawal-card, .leaderboard-card { background: linear-gradient(90deg, #e3f2fd 0%, #e6e0ff 100%); padding: 18px 16px; border-radius: 12px; margin-bottom: 22px; color: #2466c2; box-shadow: 0 2px 8px rgba(36,102,194,0.10);}
+.earn-tab-content { margin-top: 18px; }
+#photoGallery img, #videoGallery video { width: 120px; border-radius: 8px; margin: 8px; box-shadow: 0 2px 8px rgba(36,102,194,0.11); cursor: pointer; border: 2px solid transparent; transition: border 0.2s;}
+#photoGallery img.liked { border: 2px solid #36cfc9; }
+#videoGallery video.watched { border: 2px solid #fed766; }
+table { border-collapse: collapse; width: 100%; }
+table thead { background: linear-gradient(90deg, #2466c2 60%, #36cfc9 100%); color: #fff;}
+table th, table td { padding: 12px 8px; text-align: left; border-bottom: 1px solid #ddd; }
+@media (max-width: 900px) { .main-content { margin-left: 0; } .vertical-sidebar { position: relative; width: 100%; height: auto; flex-direction: row; justify-content: center; padding: 0;} .vertical-sidebar ul { flex-direction: row; display: flex; justify-content: center;} .vertical-sidebar ul li a { border-radius: 8px; margin: 0 2px;} .container { max-width: 97vw; } }
